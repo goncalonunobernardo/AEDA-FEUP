@@ -49,6 +49,10 @@ Veterinario *Animal::getVet() const {
 	return vet;
 }
 
+int Animal::getIdade() const {
+	return idade;
+}
+
 //VOADOR
 Voador::Voador(int vmax, int amax) : velocidade_max(vmax), altura_max(amax){}
 
@@ -108,7 +112,7 @@ void Zoo::alocaVeterinarios(istream &isV)
 bool Zoo::removeVeterinario(string nomeV) {
 	int indiceVet = -1;
 
-	for (auto i = 0; i < veterinarios.size(); i++)
+	for (unsigned int i = 0; i < veterinarios.size(); i++)
 		if (veterinarios.at(i)->getNome() == nomeV) //going through vet vector to find the name of the removable vet
 			indiceVet = i;
 
@@ -117,7 +121,7 @@ bool Zoo::removeVeterinario(string nomeV) {
 
 
 	//GIVING REMAINING VETS TO PUPPIES & BATS
-	for (auto i = 0; i < animais.size(); i++)
+	for (unsigned int i = 0; i < animais.size(); i++)
 		if (animais.at(i)->getVet()->getNome() == nomeV)
 			animais.at(i)->setVet(veterinarios.at((indiceVet + 1) % veterinarios.size()));
 
@@ -125,6 +129,22 @@ bool Zoo::removeVeterinario(string nomeV) {
 	veterinarios.erase(veterinarios.begin() + indiceVet);
 
 	return true;
+}
+
+bool Zoo::operator<(Zoo &zoo2) const {
+	int agezoo1 = 0;
+	int agezoo2 = 0;
+
+	for (unsigned int i = 0; i < animais.size(); i++)
+		agezoo1 += animais.at(i)->getIdade();
+
+	for (unsigned int i = 0; i < zoo2.animais.size(); i++)
+		agezoo2 += zoo2.animais.at(i)->getIdade();
+
+	if (agezoo1 < agezoo2)
+		return true;
+
+	return false;
 }
 
 //CAO
