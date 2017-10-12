@@ -165,3 +165,19 @@ string Morcego::getInformacao() const
 	inf = Animal::getInformacao() + ", " + Voador::getInformacao();
 	return inf;
 }
+
+
+/*RESPOSTA À QUESTÃO G) DA FICHA 2 ATRAVÉS DO MIGUELPDUARTE, QUE TÁ DEMASIADO BOA PARA NAOa SER PARTILHADA
+QUESTÃO:
+Pode o vetor veterinarios ser “vector<Veterinario>” e não “vector<Veterinario *>”?
+RESPOSTA:
+O vetor de veterinários pode ser um vetor de objetos e não de apontadores pois não usufrui de caraterísticas polimórficas.
+* Esta implementação será, porém, menos eficiente e mais volátil, pois grande parte das operações com vetores,
+* nomeadamenete o aumento do seu tamanho, quando ultrapassa a capacidade alocada, implica operações de cópia.
+* Para além de ser menos eficiente pois tem de haver criação de novos objetos, também é uma situação volátil pois apontadores
+* para elementos do vetor podem ficar inválidos, apontando para cópias antigas do objeto.
+* Elaboração:
+* Objeto está no vetor. Apontador é criado para o objeto no vetor.
+* Objeto é copiado quando o vetor precisa de ser realocado. Vetor antigo tem a sua memória desalocada.
+* Apontador previamente referido é agora inválido, tendo muitas vezes "undefined behaviour".
+*/
