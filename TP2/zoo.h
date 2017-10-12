@@ -36,6 +36,7 @@ public:
 	static int getMaisJovem();
 	void setVet(Veterinario* vet);
 	Veterinario* getVet() const;
+	int Animal::getIdade() const;
 
 };
 
@@ -82,7 +83,7 @@ public:
 	bool animalJovem(string nomeA);
 	void alocaVeterinarios(istream &isV);
 	bool removeVeterinario(string nomeV);
-	//bool operator < (Zoo& zoo2) const;
+	bool operator < (Zoo& zoo2) const;
 };
 
 
