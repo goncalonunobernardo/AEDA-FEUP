@@ -34,6 +34,8 @@ public:
 	virtual bool eJovem() const = 0;
 	virtual string getInformacao() const;
 	static int getMaisJovem();
+	void setVet(Veterinario* vet);
+	Veterinario* getVet() const;
 
 };
 
@@ -74,11 +76,11 @@ class Zoo {
 	vector<Veterinario *> veterinarios;
 public:
 	int numAnimais() const;
-	int numVeterinarios() const;
+	int Zoo::numVeterinarios() const;
 	void adicionaAnimal(Animal *a1);
 	string getInformacao() const;
 	bool animalJovem(string nomeA);
-	//void alocaVeterinarios(istream &isV);
+	void alocaVeterinarios(istream &isV);
 	//bool removeVeterinario(string nomeV);
 	//bool operator < (Zoo& zoo2) const;
 };

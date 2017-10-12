@@ -6,6 +6,9 @@ Veterinario::Veterinario(string nome, int cod) : nome(nome), codOrdem(cod) {}
 string Veterinario::getNome() const {
 	return nome;
 }
+string Veterinario::getInformacao() const {
+	return nome + ", " + to_string(codOrdem);
+}
 
 /* ANIMAL */
 int Animal::maisJovem = -1; //Initializing, because initially none
@@ -31,9 +34,19 @@ string Animal::getNome() const {
 string Animal::getInformacao() const
 {
 	string inf;
-	inf = nome + ", " + to_string(idade); //sem vets
+	if (vet != nullptr) //EMPTY
+		return this->nome + ", " + to_string(this->idade) + ", " + this->vet->getInformacao();
+
+	inf = nome + ", " + to_string(this ->idade); //sem vets
 
 	return inf;
+}
+void Animal::setVet(Veterinario *v) {
+	this->vet = v;
+}
+
+Veterinario *Animal::getVet() const {
+	return vet;
 }
 
 //VOADOR
@@ -72,6 +85,24 @@ string Zoo::getInformacao() const
 		inf += "\n";
 	}
 	return inf;
+}
+
+void Zoo::alocaVeterinarios(istream &isV)
+{
+	string temp, nome, codigostr;
+
+	while (!isV.eof()) {
+		getline(isV, nome);
+		getline(isV, codigostr);
+		Veterinario* tempVet = new Veterinario(nome, stoi(codigostr)); //We are using NEW because it talks about allocating memory
+						//Therefore, we should allocate a certain size of bytes to a new memory block.
+		veterinarios.push_back(tempVet);
+	}
+
+	//GIVING VETS TO PUPPIES & BATS
+	for(unsigned int i = 0; i < animais.size(); i++)
+		animais.at(i)->setVet(veterinarios.at(i%veterinarios.size())); //EVEN DISTRIBUTION & DISTRIBUTING VETS TO MORE THAN 1 ANIMAL
+
 }
 
 //CAO
