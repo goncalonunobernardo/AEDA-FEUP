@@ -81,7 +81,7 @@ public:
 	string getInformacao() const;
 	bool animalJovem(string nomeA);
 	void alocaVeterinarios(istream &isV);
-	//bool removeVeterinario(string nomeV);
+	bool removeVeterinario(string nomeV);
 	//bool operator < (Zoo& zoo2) const;
 };
 

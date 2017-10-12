@@ -105,6 +105,28 @@ void Zoo::alocaVeterinarios(istream &isV)
 
 }
 
+bool Zoo::removeVeterinario(string nomeV) {
+	int indiceVet = -1;
+
+	for (auto i = 0; i < veterinarios.size(); i++)
+		if (veterinarios.at(i)->getNome() == nomeV) //going through vet vector to find the name of the removable vet
+			indiceVet = i;
+
+	if (indiceVet == -1) // didn't found the vet
+		return false;
+
+
+	//GIVING REMAINING VETS TO PUPPIES & BATS
+	for (auto i = 0; i < animais.size(); i++)
+		if (animais.at(i)->getVet()->getNome() == nomeV)
+			animais.at(i)->setVet(veterinarios.at((indiceVet + 1) % veterinarios.size()));
+
+	//REMOVING THE VET. SO LONG
+	veterinarios.erase(veterinarios.begin() + indiceVet);
+
+	return true;
+}
+
 //CAO
 Cao::Cao(string nome, int idade, string raca) : Animal(nome, idade), raca(raca) {}
 

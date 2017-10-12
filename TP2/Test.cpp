@@ -102,7 +102,7 @@ void test_e_alocarVeterinarios() {
 
 void test_f_removerVeterinario() {
 
-/*	Zoo z1;
+	Zoo z1;
 
 	Animal *a1=new Cao("kurika",10,"estrela");  //nome, idade, raça
 	Animal *a2=new Morcego("bobo",2,70,2);  //nome, idade, velocidade_maxima, altura_maxima
@@ -128,7 +128,7 @@ void test_f_removerVeterinario() {
 
 	z1.removeVeterinario("Rui Silva");
 
-	ASSERT_EQUAL("kurika, 10, Artur Costa, 3542, estrela", a1->getInformacao());*/
+	ASSERT_EQUAL("kurika, 10, Artur Costa, 3542, estrela", a1->getInformacao());
 }
 
 void test_h_compararZoos() {
