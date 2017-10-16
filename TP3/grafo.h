@@ -13,7 +13,7 @@ template <class N, class A>
 class No {
 public:
 	N info;
-	vector< Aresta<N,A> > arestas;
+	vector< Aresta<N, A> > arestas;
 	No(N inf) {
 		info = inf;
 	}
@@ -23,35 +23,35 @@ template <class N, class A>
 class Aresta {
 public:
 	A valor;
-	No<N,A> *destino;
-	Aresta(No<N,A> *dest, A val) {
+	No<N, A> *destino;
+	Aresta(No<N, A> *dest, A val) {
 		valor = val;
 		destino = dest;
 	}
 };
 
-template <class N, class A> 
-class Grafo { 
-	vector< No<N,A> *> nos;
-  public: 
-    Grafo();
-    ~Grafo(); 
-    Grafo & inserirNo(const N &dados);
-    Grafo & inserirAresta(const N &inicio, const N &fim, const A &val);
-    Grafo & eliminarAresta(const N &inicio, const N &fim);
-    A & valorAresta(const N &inicio, const N &fim);
-    int numArestas(void) const;
-    int numNos(void) const;
-    void imprimir(std::ostream &os) const; 
+template <class N, class A>
+class Grafo {
+	vector< No<N, A> *> nos;
+public:
+	Grafo();
+	~Grafo();
+	Grafo & inserirNo(const N &dados);
+	Grafo & inserirAresta(const N &inicio, const N &fim, const A &val);
+	Grafo & eliminarAresta(const N &inicio, const N &fim);
+	A & valorAresta(const N &inicio, const N &fim);
+	int numArestas(void) const;
+	int numNos(void) const;
+	void imprimir(std::ostream &os) const;
 };
 
 //CONSTRUCTORS, DESTRUCTORS, SO ON(...)
 //C
 template <class N, class A>
-Grafo<N,A>::Grafo(){}
+Grafo<N, A>::Grafo() {}
 //D
 template <class N, class A>
-Grafo<N, A>::~Grafo() 
+Grafo<N, A>::~Grafo()
 {
 	for (unsigned int i = 0; i < nos.size(); i++)
 	{
@@ -69,9 +69,14 @@ int Grafo<N, A>::numNos(void) const
 template <class N, class A>
 int Grafo<N, A>::numArestas(void) const
 {
+	unsigned int counter = 0;
+	for (unsigned int i = 0; i<nos.size(); i++) {
+		counter += no->arestas.size();
+	}
 
-
+	return counter;
 }
+//FINISHED a)
 
 
 
