@@ -79,6 +79,22 @@ int Grafo<N, A>::numArestas(void) const
 //FINISHED a)
 
 
+template <class N, class A>
+Grafo<N, A> & Grafo<N, A>::inserirNo(const N &dados)
+{
+	//Checking if already exists
+	for (unsigned int i = 0; i < nos.size(); i++)
+		if (nos.at(i)->info == dados)
+			throw NoRepetido<N>(dados);
+		//Allocations, allocations
+		No<N, A> *temp_no = new No<N, A>(dados);
+		//pushing back to vec
+		nos.push_back(temp_no);
+
+		return *this;
+}
+
+
 
 template <class N, class A> 
 std::ostream & operator<<(std::ostream &out, const Grafo<N,A> &g);
