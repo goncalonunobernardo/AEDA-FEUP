@@ -7,7 +7,23 @@ using namespace std;
  * Versão da classe generica Grafo usando a classe vector
  */
 
+//PROTOTYPING B O Y Z
 template <class N, class A> class Aresta;
+
+template <class N, class A> class No;
+
+template <class N, class A> class Grafo;
+
+template <class N> class ArestaRepetida;
+
+template <class N> class NoRepetido;
+
+template <class N> class NoInexistente;
+
+template <class N> class ArestaInexistente;
+
+template <class N, class A> class Aresta;
+
 
 template <class N, class A>
 class No {
@@ -71,7 +87,7 @@ int Grafo<N, A>::numArestas(void) const
 {
 	unsigned int counter = 0;
 	for (unsigned int i = 0; i<nos.size(); i++) {
-		counter += no->arestas.size();
+		counter += nos.at(i)->arestas.size();
 	}
 
 	return counter;
@@ -93,11 +109,35 @@ Grafo<N, A> & Grafo<N, A>::inserirNo(const N &dados)
 
 		return *this;
 }
+//FINISHED b)
 
+template <class N, class A>
+Grafo<N,A> & Grafo<N,A>::inserirAresta(const N &inicio, const N &fim, const A &val)
+{
 
+	for(unsigned int i=0;i<nos.size();i++)
+		if(nos.at(i)->info==inicio)
+		{
+			for(unsigned int j=0;j<nos.at(i)->arestas.size();j++)
+				if(nos.at(i)->arestas.at(j).destino->info == fim)
+					throw ArestaRepetida<N>(inicio,fim);
+
+			No<N,A> *temp = new No<N,A>(fim);
+
+			Aresta<N,A> a1(temp,val);
+			nos.at(i)->arestas.push_back(a1);
+
+			return *this;
+		}
+
+	throw NoInexistente<N>(inicio);
+}
+//FINISHED c)
 
 template <class N, class A> 
 std::ostream & operator<<(std::ostream &out, const Grafo<N,A> &g);
+
+//EXCECOES
 
 // excecao  NoRepetido
 template <class N>
@@ -125,3 +165,21 @@ template <class N>
 std::ostream & operator<<(std::ostream &out, const NoInexistente<N> &ni)
 { out << "No inexistente: " << ni.info; return out; }
 
+
+//excecao ArestaRepetida
+template <class N>
+class ArestaRepetida
+{
+public:
+	N inicio;
+	N destino;
+	ArestaRepetida(N inicial, N destination) {
+		inicio=inicial;
+		destino=destination; }
+};
+template <class N>
+std::ostream & operator<<(std::ostream &out, const ArestaRepetida<N> &aresta)
+{
+	out << "Aresta repetida: " << aresta.inicio << " , " << aresta.destino;
+	return out;
+}
