@@ -134,6 +134,24 @@ Grafo<N,A> & Grafo<N,A>::inserirAresta(const N &inicio, const N &fim, const A &v
 }
 //FINISHED c)
 
+
+template <class N, class A>
+A & Grafo<N,A>::valorAresta(const N &inicio, const N &fim)
+{
+	for(int i=0;i<nos.size();i++)
+		if(nos.at(i)->info==inicio)
+		{
+			for(int j=0;j<nos.at(i)->arestas.size();j++)
+				if(nos.at(i)->arestas.at(j).destino->info==inicio)
+					return nos.at(i)->arestas.at(j).valor;
+
+			throw ArestaInexistente<N>(inicio,fim);
+		}
+
+	throw NoInexistente<N>(inicio);
+}
+//FINISHED d)
+
 template <class N, class A> 
 std::ostream & operator<<(std::ostream &out, const Grafo<N,A> &g);
 
@@ -181,5 +199,25 @@ template <class N>
 std::ostream & operator<<(std::ostream &out, const ArestaRepetida<N> &aresta)
 {
 	out << "Aresta repetida: " << aresta.inicio << " , " << aresta.destino;
+	return out;
+}
+
+
+//excecao ArestaInexistente
+
+template <class N>
+class ArestaInexistente
+{
+public:
+	N inicio;
+	N destino;
+	ArestaInexistente(N inic, N dest) {
+		inicio=inic;
+		destino=dest; }
+};
+template <class N>
+std::ostream & operator <<(std::ostream &out, const ArestaInexistente<N> &aresta)
+{
+	out << "Aresta inexistente: " << aresta.inicio << " , " << aresta.destino;
 	return out;
 }

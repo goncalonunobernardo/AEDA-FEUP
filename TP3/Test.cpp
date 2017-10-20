@@ -33,7 +33,7 @@ void test_b_InserirNo() {
 }
 
 void test_c_InserirAresta() {
-	Grafo<string,int> f;
+	/*Grafo<string,int> f;
 	f.inserirNo("A");
 	f.inserirNo("B");
 	f.inserirNo("C");
@@ -69,11 +69,11 @@ void test_c_InserirAresta() {
 		ASSERT_EQUAL(str1, ostr1.str());
 	}
 
-	ASSERT_EQUAL(7, f.numArestas());
+	ASSERT_EQUAL(7, f.numArestas());*/
 }
 
 void test_d_ValorAresta() {
-	/*Grafo<string,int> f;
+	Grafo<string,int> f;
 	f.inserirNo("A");
 	f.inserirNo("B");
 	f.inserirNo("C");
@@ -110,7 +110,7 @@ void test_d_ValorAresta() {
 		ostr1 << e;
 		string str1 = "No inexistente: F";
 		ASSERT_EQUAL(str1, ostr1.str());
-	}*/
+	}
 }
 
 void test_e_EliminarAresta() {
