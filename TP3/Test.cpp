@@ -114,7 +114,7 @@ void test_d_ValorAresta() {
 }
 
 void test_e_EliminarAresta() {
-	Grafo<string,int> f;
+	/*Grafo<string,int> f;
 	f.inserirNo("A");
 	f.inserirNo("B");
 	f.inserirNo("C");
@@ -154,7 +154,7 @@ void test_e_EliminarAresta() {
 		ASSERT_EQUAL(str1, ostr1.str());
 	}
 
-	ASSERT_EQUAL(6, f.numArestas());
+	ASSERT_EQUAL(6, f.numArestas());*/
 }
 
 void test_f_ImprimirGrafo() {
@@ -176,12 +176,11 @@ void test_f_ImprimirGrafo() {
 	f.imprimir(ostr);
 	string str = "( A[ B 5] [ C 8] ) ( B[ D 9] ) ( C[ D 3] [ E 4] ) ( D[ E 2] [ B 11] ) ( E) ";
 	cout << str.c_str()<<endl;
-	ASSERT_EQUAL(str, ostr.str());
-*/
+	ASSERT_EQUAL(str, ostr.str());*/
 }
 
 void test_g_OperadorSaida() {
-/*	Grafo<string,int> f;
+	Grafo<string,int> f;
 	f.inserirNo("A");
 	f.inserirNo("B");
 	f.inserirNo("C");
@@ -198,7 +197,7 @@ void test_g_OperadorSaida() {
 	ostringstream ostr;
 	ostr << f;
 	string str = "( A[ B 5] [ C 8] ) ( B[ D 9] ) ( C[ D 3] [ E 4] ) ( D[ E 2] [ B 11] ) ( E) ";
-	ASSERT_EQUAL(str, ostr.str());*/
+	ASSERT_EQUAL(str, ostr.str());
 }
 
 void runSuite(){

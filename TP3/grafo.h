@@ -138,10 +138,10 @@ Grafo<N,A> & Grafo<N,A>::inserirAresta(const N &inicio, const N &fim, const A &v
 template <class N, class A>
 A & Grafo<N,A>::valorAresta(const N &inicio, const N &fim)
 {
-	for(int i=0;i<nos.size();i++)
+	for(unsigned int i=0;i<nos.size();i++)
 		if(nos.at(i)->info==inicio)
 		{
-			for(int j=0;j<nos.at(i)->arestas.size();j++)
+			for(unsigned int j=0;j<nos.at(i)->arestas.size();j++)
 				if(nos.at(i)->arestas.at(j).destino->info==fim)
 					return nos.at(i)->arestas.at(j).valor;
 
@@ -156,10 +156,10 @@ A & Grafo<N,A>::valorAresta(const N &inicio, const N &fim)
 template <class N, class A>
 Grafo<N,A> & Grafo<N,A>::eliminarAresta(const N &inicio, const N &fim)
 {
-	for(int i=0;i<nos.size();i++)
+	for(unsigned int i=0;i<nos.size();i++)
 			if(nos.at(i)->info==inicio)
 			{
-				for(int j=0;j<nos.at(i)->arestas.size();j++)
+				for(unsigned int j=0;j<nos.at(i)->arestas.size();j++)
 					if(nos.at(i)->arestas.at(j).destino->info==fim)
 						{
 							nos.at(i)->arestas.erase(nos.at(i)->arestas.begin()+i);
@@ -174,11 +174,30 @@ Grafo<N,A> & Grafo<N,A>::eliminarAresta(const N &inicio, const N &fim)
 //FINISHED e)
 
 
+
+template <class N, class A>
+void Grafo<N,A>::imprimir(std::ostream &os) const
+{
+	for(unsigned int i=0;i<nos.size();i++)
+	{
+		os << "( " << nos.at(i)->info;
+
+		for(unsigned int j=0;j<nos.at(i)->arestas.size();j++)
+			os << "[ " << nos.at(i)->arestas.at(j).destino->info << " " << nos.at(i)->arestas.at(j).valor << "] ";
+
+		os << ") ";
+	}
+}
 template <class N, class A> 
-std::ostream & operator<<(std::ostream &out, const Grafo<N,A> &g);
+std::ostream & operator<<(std::ostream &out, const Grafo<N,A> &g)
+{
+	g.imprimir(out);
+	return out;
+}
+//FINISHED f & g) AYEEE
+
 
 //EXCECOES
-
 // excecao  NoRepetido
 template <class N>
 class NoRepetido
