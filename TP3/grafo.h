@@ -142,7 +142,7 @@ A & Grafo<N,A>::valorAresta(const N &inicio, const N &fim)
 		if(nos.at(i)->info==inicio)
 		{
 			for(int j=0;j<nos.at(i)->arestas.size();j++)
-				if(nos.at(i)->arestas.at(j).destino->info==inicio)
+				if(nos.at(i)->arestas.at(j).destino->info==fim)
 					return nos.at(i)->arestas.at(j).valor;
 
 			throw ArestaInexistente<N>(inicio,fim);
@@ -151,6 +151,28 @@ A & Grafo<N,A>::valorAresta(const N &inicio, const N &fim)
 	throw NoInexistente<N>(inicio);
 }
 //FINISHED d)
+
+
+template <class N, class A>
+Grafo<N,A> & Grafo<N,A>::eliminarAresta(const N &inicio, const N &fim)
+{
+	for(int i=0;i<nos.size();i++)
+			if(nos.at(i)->info==inicio)
+			{
+				for(int j=0;j<nos.at(i)->arestas.size();j++)
+					if(nos.at(i)->arestas.at(j).destino->info==fim)
+						{
+							nos.at(i)->arestas.erase(nos.at(i)->arestas.begin()+i);
+							return *this;
+						}
+
+				throw ArestaInexistente<N>(inicio,fim);
+			}
+
+		throw NoInexistente<N>(inicio);
+}
+//FINISHED e)
+
 
 template <class N, class A> 
 std::ostream & operator<<(std::ostream &out, const Grafo<N,A> &g);
