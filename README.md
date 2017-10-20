@@ -11,4 +11,4 @@ Course Link: https://sigarra.up.pt/feup/pt/ucurr_geral.ficha_uc_view?pv_ocorrenc
 
 QUICK NOTES:
 
-Using VS with the CUTE plugin installed, instead of the recommended one given in class (ECLIPSE also w/ CUTE plugin installed).
+Using VS with the CUTE plugin installed and SOMETIMES ECLIPSE also w/ the CUTE plugin installed.
