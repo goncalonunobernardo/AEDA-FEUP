@@ -1,6 +1,11 @@
 #include <iostream>
 #include <vector>
 
+//DÚVIDAS AEDA:
+//QD É QUE SEI QUE É class<N> e nao class<N>, class<A>???
+//explicar *this
+
+
 using namespace std;
 
 /**
