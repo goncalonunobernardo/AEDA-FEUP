@@ -75,7 +75,16 @@ bool ParqueEstacionamento::sair(const string & nome)
 	return true;
 }
 
-// a alterar
+// A ALTERAR PARA PESQUISA SEQUENCIAL
+// We have to use the == operator because SSrch compares two values
+bool InfoCartao::operator == (const InfoCartao &ic1) const {	
+	return this->nome == ic1.nome;
+}
 int ParqueEstacionamento::posicaoCliente(const string & nome) const {
-	return -1;
+	//in order to use the sequential search provided, we need to create
+	//a temporary object. Therefore:
+	InfoCartao ic;
+	ic.nome = nome;
+
+	return sequentialSearch(this->clientes, ic);
 }
