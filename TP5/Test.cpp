@@ -5,7 +5,7 @@
 
 
 void test_a_Pesquisa() {
-	ParqueEstacionamento p1(10,20);
+	/*ParqueEstacionamento p1(10,20);
 	p1.adicionaCliente("Joao Santos");
 	p1.adicionaCliente("Pedro Morais");
 	p1.adicionaCliente("Rui Silva");
@@ -14,11 +14,11 @@ void test_a_Pesquisa() {
 	ASSERT_EQUAL(0, p1.posicaoCliente("Joao Santos"));
 	ASSERT_EQUAL(4, p1.posicaoCliente("Maria Tavares"));
 	ASSERT_EQUAL(1, p1.posicaoCliente("Pedro Morais"));
-	ASSERT_EQUAL(-1, p1.posicaoCliente("Tiago Tavares"));
+	ASSERT_EQUAL(-1, p1.posicaoCliente("Tiago Tavares"));*/
 }
 
 void test_b_UtilizacaoParque() {
-	/*ParqueEstacionamento p1(10,20);
+	ParqueEstacionamento p1(10,20);
 	p1.adicionaCliente("Joao Santos");
 	p1.adicionaCliente("Pedro Morais");
 	p1.adicionaCliente("Rui Silva");
@@ -47,7 +47,7 @@ void test_b_UtilizacaoParque() {
 	catch (ClienteNaoExistente &e) {
 		cout << "Apanhou excecao. Cliente nao existente: " << e.getNome() << endl;
 		ASSERT_EQUAL("Tiago Silva", e.getNome());
-	}*/
+	}
 }
 
 void test_c_OrdenaFrequencia() {

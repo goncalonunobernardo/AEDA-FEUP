@@ -41,5 +41,14 @@ public:
 	vector<string> clientesGamaUso(int n1, int n2);
 };
 
+class ClienteNaoExistente {
+private:
+	string nome;
+
+public:
+	string getNome() const;
+	ClienteNaoExistente(const string &nome);
+};
+
 
 #endif /*PARQUE_H_*/
