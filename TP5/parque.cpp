@@ -2,8 +2,12 @@
 #include "insertionSort.h"
 #include "sequentialSearch.h"
 #include <vector>
+#include <algorithm> //SORTS
 
 using namespace std;
+/*NOTAS:
+INFOCARTAO METHODS == && <
+*/
 
 
 ParqueEstacionamento::ParqueEstacionamento(unsigned int lot, unsigned int nMaxCli):
@@ -107,4 +111,22 @@ ClienteNaoExistente::ClienteNaoExistente(const string &nome) : nome(nome) {} //t
 //getNome function
 string ClienteNaoExistente::getNome() const {
 	return this->nome;
+}
+
+//EXERCISE C)
+bool minorClient(const InfoCartao &ic1, const InfoCartao &ic2)
+{
+	return (ic1.nome < ic2.nome);
+}
+void ParqueEstacionamento::ordenaClientesPorFrequencia() {
+	insertionSort(clientes);
+}
+void ParqueEstacionamento::ordenaClientesPorNome() {
+	sort(clientes.begin(), clientes.end(), minorClient);
+}
+bool InfoCartao::operator < (const InfoCartao &ic1) const {
+	if (this->frequencia == ic1.frequencia)
+		return this->nome < ic1.nome;
+
+	return this->frequencia > ic1.frequencia;
 }

@@ -18,7 +18,7 @@ void test_a_Pesquisa() {
 }
 
 void test_b_UtilizacaoParque() {
-	ParqueEstacionamento p1(10,20);
+	/*ParqueEstacionamento p1(10,20);
 	p1.adicionaCliente("Joao Santos");
 	p1.adicionaCliente("Pedro Morais");
 	p1.adicionaCliente("Rui Silva");
@@ -47,11 +47,11 @@ void test_b_UtilizacaoParque() {
 	catch (ClienteNaoExistente &e) {
 		cout << "Apanhou excecao. Cliente nao existente: " << e.getNome() << endl;
 		ASSERT_EQUAL("Tiago Silva", e.getNome());
-	}
+	}*/
 }
 
 void test_c_OrdenaFrequencia() {
-/*	ParqueEstacionamento p1(10,20);
+	ParqueEstacionamento p1(10,20);
 	p1.adicionaCliente("Joao Santos");
 	p1.adicionaCliente("Pedro Morais");
 	p1.adicionaCliente("Rui Silva");
@@ -81,7 +81,7 @@ void test_c_OrdenaFrequencia() {
 	ASSERT_EQUAL(2, ic1.frequencia);
 	InfoCartao ic2=p1.getClientes()[0];
 	ASSERT_EQUAL("Rui Silva", ic2.nome);
-	ASSERT_EQUAL(3, ic2.frequencia);*/
+	ASSERT_EQUAL(3, ic2.frequencia);
 }
 
 void test_d_GamasUso() {
