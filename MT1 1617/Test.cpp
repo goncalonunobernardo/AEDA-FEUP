@@ -22,7 +22,7 @@ void test_a() {
 }
 
 void test_b() {
-	PostOffice po;
+	/*PostOffice po;
 	Postman p1;
 	p1. setName("joao");
 	p1.addMail(new RegularMail("ana", "rui","4400-146", 33));
@@ -55,11 +55,11 @@ void test_b() {
 	mailP = po.removePostman("joao");
 	ASSERT_EQUAL(2, mailP.size());
 
-	ASSERT_EQUAL(0,po.getPostman().size());
+	ASSERT_EQUAL(0,po.getPostman().size());*/
 }
 
 void test_c() {
-	/*RegularMail m1("manuel", "ana","3330-454", 33);
+	RegularMail m1("manuel", "ana","3330-454", 33);
 	RegularMail m2("ana", "rui","4400-146", 550);
 	GreenMail m3("maria", "luis","2520-110", "bag");
 	GreenMail m4("carla", "lara","7100-514", "envelope");
@@ -67,7 +67,7 @@ void test_c() {
 	ASSERT_EQUAL(75, m1.getPrice());
 	ASSERT_EQUAL(325, m2.getPrice());
 	ASSERT_EQUAL(200, m3.getPrice());
-	ASSERT_EQUAL(80, m4.getPrice());*/
+	ASSERT_EQUAL(80, m4.getPrice());
 }
 
 void test_d() {
