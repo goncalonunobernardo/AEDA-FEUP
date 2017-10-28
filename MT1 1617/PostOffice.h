@@ -26,8 +26,7 @@ public:
 	vector<Postman> getPostman() const;
 	vector<Mail *> removePostman(string name);
 	vector<Mail *> endOfDay(unsigned int &balance);
-	//--------------------------------
-	//Postman addMailToPostman(Mail *m, string name);
+	Postman addMailToPostman(Mail *m, string name);
 };
 
 #endif /* SRC_POSTOFFICE_H_ */

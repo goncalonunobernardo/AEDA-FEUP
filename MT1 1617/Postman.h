@@ -26,5 +26,16 @@ public:
 
 };
 
+class NoPostmanException{
+    string name;
+
+public:
+    string getName(){
+    	return name;
+    };
+    NoPostmanException(string name): name(name){};
+
+};
+
 
 #endif /* SRC_POSTMAN_H_ */

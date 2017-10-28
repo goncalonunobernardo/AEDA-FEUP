@@ -80,3 +80,19 @@ vector<Mail *> PostOffice::endOfDay(unsigned int &balance)
 
 	return mail;
 }
+
+Postman PostOffice::addMailToPostman(Mail *m, string name)
+{
+	for(unsigned int i= 0; i<postmen.size(); i++)
+	{
+		if(postmen.at(i).getName() == name)
+		{//add the mail
+			postmen.at(i).addMail(m);
+		 //return the postman
+			return postmen.at(i);
+		}
+
+	}
+
+	throw (NoPostmanException(name));
+}
