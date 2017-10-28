@@ -71,7 +71,7 @@ void test_c() {
 }
 
 void test_d() {
-	PostOffice po("3100-000", "4409-999");
+/*	PostOffice po("3100-000", "4409-999");
 	po.addMailToSend(new RegularMail("manuel", "ana","3330-454", 33));
 	po.addMailToSend(new RegularMail("ana", "rui","4400-146", 550));
 	po.addMailToSend(new GreenMail("maria", "luis","2520-110", "bag"));
@@ -91,17 +91,17 @@ void test_d() {
 	ASSERT_EQUAL(140, bal);
 	ASSERT_EQUAL(1,mailToOtherPO.size());
 	ASSERT_EQUAL(0,po2.getMailToDeliver().size());
-	ASSERT_EQUAL(0,po2.getMailToSend().size());
+	ASSERT_EQUAL(0,po2.getMailToSend().size());*/
 }
 
 void test_e() {
-	/*Postman p1("joao");
+	Postman p1("joao");
 	Postman p2("rui");
 	Postman p3("paulo");
 
 	ASSERT_EQUAL(1, p1.getID());
 	ASSERT_EQUAL(2, p2.getID());
-	ASSERT_EQUAL(3, p3.getID());*/
+	ASSERT_EQUAL(3, p3.getID());
 }
 
 void test_f() {

@@ -3,8 +3,14 @@
  */
 #include "Postman.h"
 
+static unsigned int postmanID = 1;
+
 
 Postman::Postman(): id(0) {}
+
+Postman::Postman(string name): name(name), id(postmanID) {
+	postmanID++;
+}
 
 void Postman::setName(string nm){
 	name = nm;

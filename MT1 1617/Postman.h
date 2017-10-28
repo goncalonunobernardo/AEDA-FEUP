@@ -15,6 +15,7 @@ class Postman {
 	vector<Mail *> myMail;
 public:
 	Postman();
+	Postman(string name);
 	void setName(string nm);
 	void addMail(Mail *m);
 	void addMail(vector<Mail *> mails);
