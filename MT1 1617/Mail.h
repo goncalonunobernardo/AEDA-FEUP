@@ -18,6 +18,7 @@ public:
 	Mail(string send, string rec, string zcode);
 	virtual ~Mail();
 	string getZipCode() const;
+	virtual unsigned int getPrice () const = 0;
 };
 
 
