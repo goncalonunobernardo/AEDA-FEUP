@@ -82,4 +82,15 @@ void Escritorio::adicionaFuncionario(Funcionario f1)
 vector<Impressora *> Escritorio::getImpressoras() const
 { return impressoras; }
 
+int Escritorio::numImpressorasSemResponsavel() const{
+	int counter = 0;
+
+	for (size_t i = 0; i< funcionarios.size(); i++)
+	{
+		counter += funcionarios.at(i).getImpressoras().size();
+	}
+
+	return impressoras.size() - counter;
+}
+
 

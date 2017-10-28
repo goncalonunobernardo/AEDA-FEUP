@@ -77,6 +77,7 @@ public:
   void adicionaImpressora(Impressora *i1);
   void adicionaFuncionario(Funcionario f1);
   vector<Impressora *> getImpressoras() const;
+  int numImpressorasSemResponsavel() const;
   // …
 };
 

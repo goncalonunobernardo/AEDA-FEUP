@@ -1,10 +1,11 @@
+
 #include "cute.h"
 #include "ide_listener.h"
 #include "cute_runner.h"
 #include "Escritorio.h"
 
 void test_a_ImpressorasSemResponsavel() {
-/*	Escritorio e1;
+	Escritorio e1;
 	Impressora *imp1 = new ImpressoraPB("PBa", 2014, 25);   //codigo, ano, numPaginasToner
 	Impressora *imp2 = new ImpressoraCores("Ca", 2014, 50);   //codigo, ano, numPaginasToner
 	Impressora *imp3 = new ImpressoraPB("PBb", 2014, 100);   //codigo, ano, numPaginasToner
@@ -42,7 +43,7 @@ void test_a_ImpressorasSemResponsavel() {
 	fd.adicionaImpressora(imp3);
 	e1.adicionaFuncionario(fd);
 
-	ASSERT_EQUAL(0, e1.numImpressorasSemResponsavel());*/
+	ASSERT_EQUAL(0, e1.numImpressorasSemResponsavel());
 }
 
 
