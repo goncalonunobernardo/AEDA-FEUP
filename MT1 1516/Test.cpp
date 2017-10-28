@@ -5,7 +5,7 @@
 #include "Escritorio.h"
 
 void test_a_ImpressorasSemResponsavel() {
-	Escritorio e1;
+	/*Escritorio e1;
 	Impressora *imp1 = new ImpressoraPB("PBa", 2014, 25);   //codigo, ano, numPaginasToner
 	Impressora *imp2 = new ImpressoraCores("Ca", 2014, 50);   //codigo, ano, numPaginasToner
 	Impressora *imp3 = new ImpressoraPB("PBb", 2014, 100);   //codigo, ano, numPaginasToner
@@ -43,13 +43,13 @@ void test_a_ImpressorasSemResponsavel() {
 	fd.adicionaImpressora(imp3);
 	e1.adicionaFuncionario(fd);
 
-	ASSERT_EQUAL(0, e1.numImpressorasSemResponsavel());
+	ASSERT_EQUAL(0, e1.numImpressorasSemResponsavel());*/
 }
 
 
 
 void test_b_RetiraImpressoras() {
-	/*Escritorio e1;
+	Escritorio e1;
 	Impressora *imp1 = new ImpressoraPB("PBa", 2011, 100);   //codigo, ano, numPaginasToner
 	Impressora *imp2 = new ImpressoraCores("Ca", 2010, 100);   //codigo, ano, numPaginasToner
 	Impressora *imp3 = new ImpressoraPB("PBb", 2008, 100);   //codigo, ano, numPaginasToner
@@ -74,7 +74,7 @@ void test_b_RetiraImpressoras() {
 	res = e1.retiraImpressoras(2012);
 	ASSERT_EQUAL (3, res.size());
 	ASSERT_EQUAL(1,e1.getImpressoras().size());
-	ASSERT_EQUAL("PBc", e1.getImpressoras()[0]->getCodigo());*/
+	ASSERT_EQUAL("PBc", e1.getImpressoras()[0]->getCodigo());
 }
 
 

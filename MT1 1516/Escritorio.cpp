@@ -93,4 +93,20 @@ int Escritorio::numImpressorasSemResponsavel() const{
 	return impressoras.size() - counter;
 }
 
+vector<Impressora *> Escritorio::retiraImpressoras(int ano1)
+{
+	vector<Impressora *> impressremovida;
+
+	for(size_t i = 0; i<impressoras.size(); i++)
+	{
+		if(impressoras.at(i)->getAno() < ano1)
+		{
+			impressremovida.push_back(impressoras.at(i));
+			impressoras.erase(impressoras.begin() + i);
+			i--;
+		}
+	}
+
+	return impressremovida;
+}
 
