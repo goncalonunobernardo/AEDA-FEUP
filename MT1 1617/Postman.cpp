@@ -30,7 +30,5 @@ unsigned int Postman::getID() const{
 	return id;
 }
 
-//EXERCISE A)
-
 
 

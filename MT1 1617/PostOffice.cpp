@@ -34,4 +34,19 @@ vector<Postman> PostOffice::getPostman() const {
 	return postmen;
 }
 
+vector<Mail *> PostOffice::removePostman(string name){
 
+	vector<Mail *> tempmail;
+
+	for(unsigned int i = 0; i < postmen.size(); i++)
+	{
+		if(postmen.at(i).getName() == name)
+		{
+			tempmail = postmen.at(i).getMail();
+			postmen.erase(postmen.begin() + i);
+		}
+
+	}
+
+	return tempmail;
+}
