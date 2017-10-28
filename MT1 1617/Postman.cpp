@@ -37,4 +37,24 @@ unsigned int Postman::getID() const{
 }
 
 
+bool Postman::operator<(const Postman & p2) const
+{
+	vector <string> zpc1;
+	vector <string> zpc2;
+
+	//Taking care of the first zpc
+	for(unsigned int i = 0; i < myMail.size(); i++)
+		zpc1.push_back(myMail.at(i)->getZipCode());
+
+
+	vector <Mail *> otherPostman = p2.getMail();
+
+	//Taking care of the second zpc
+	for(unsigned int i = 0; i < otherPostman.size(); i++)
+		zpc2.push_back(otherPostman.at(i)->getZipCode());
+
+	//Comparing
+	return (numberDifferent(zpc1) < numberDifferent(zpc2));
+
+}
 

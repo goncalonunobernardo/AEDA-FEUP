@@ -22,6 +22,7 @@ public:
 	string getName() const;
 	vector<Mail *> getMail() const;
 	unsigned int getID() const;
+	bool operator<(const Postman & p2) const;
 
 };
 

@@ -95,17 +95,17 @@ void test_d() {
 }
 
 void test_e() {
-	Postman p1("joao");
+	/*Postman p1("joao");
 	Postman p2("rui");
 	Postman p3("paulo");
 
 	ASSERT_EQUAL(1, p1.getID());
 	ASSERT_EQUAL(2, p2.getID());
-	ASSERT_EQUAL(3, p3.getID());
+	ASSERT_EQUAL(3, p3.getID());*/
 }
 
 void test_f() {
-/*	Postman p1;
+	Postman p1;
 	p1. setName("joao");
 	p1.addMail(new RegularMail("rui", "ana","3330-454", 33));
 	p1.addMail(new RegularMail("ana", "rui","4400-146", 33));
@@ -127,7 +127,7 @@ void test_f() {
 	p2.addMail(new RegularMail("maria", "lara","8600-306", 67));
 
 	ASSERT_EQUAL(false, p1<p2);
-	ASSERT_EQUAL(true, p2<p1);*/
+	ASSERT_EQUAL(true, p2<p1);
 }
 
 void test_g() {
