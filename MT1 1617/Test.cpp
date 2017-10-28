@@ -9,7 +9,7 @@
 using namespace std;
 
 void test_a() {
-	/*vector<int> v1;
+	vector<int> v1;
 	v1.push_back(10); v1.push_back(8);
 	v1.push_back(12); v1.push_back(8);
 	ASSERT_EQUAL(3, numberDifferent(v1));
@@ -18,7 +18,7 @@ void test_a() {
 	ASSERT_EQUAL(1, numberDifferent(v2));
 	v2.push_back("rio"); v2.push_back("arvore");
 	v2.push_back("sol"); v2.push_back("sol");
-	ASSERT_EQUAL(4, numberDifferent(v2));*/
+	ASSERT_EQUAL(4, numberDifferent(v2));
 }
 
 void test_b() {

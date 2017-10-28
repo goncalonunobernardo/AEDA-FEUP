@@ -21,6 +21,7 @@ public:
 	string getName() const;
 	vector<Mail *> getMail() const;
 	unsigned int getID() const;
+	vector<Mail *> removePostman(string name);
 };
 
 
