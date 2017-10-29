@@ -26,13 +26,14 @@ public:
 	int getNumTransacoes() const;
 	Cliente *getTitular2() const;
 	void setTitular2(Cliente *cli2);
-
+	virtual bool levantamento(float valor) = 0;
+	void deposito(float valor);
 };
 
 class Normal: public Conta {
 public:
    Normal(int nConta, float sd=0, int nTrans=0);
-
+   bool levantamento(float valor);
 };
 
 
@@ -40,7 +41,7 @@ class DeOperacao: public Conta {
   float taxa;
 public:
   DeOperacao(int nConta, float tx, float sd=0, int nTrans=0);
-
+  bool levantamento(float valor);
 };
 
 
