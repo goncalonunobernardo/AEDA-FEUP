@@ -49,7 +49,7 @@ void test_a_ImpressorasSemResponsavel() {
 
 
 void test_b_RetiraImpressoras() {
-	Escritorio e1;
+	/*Escritorio e1;
 	Impressora *imp1 = new ImpressoraPB("PBa", 2011, 100);   //codigo, ano, numPaginasToner
 	Impressora *imp2 = new ImpressoraCores("Ca", 2010, 100);   //codigo, ano, numPaginasToner
 	Impressora *imp3 = new ImpressoraPB("PBb", 2008, 100);   //codigo, ano, numPaginasToner
@@ -74,13 +74,13 @@ void test_b_RetiraImpressoras() {
 	res = e1.retiraImpressoras(2012);
 	ASSERT_EQUAL (3, res.size());
 	ASSERT_EQUAL(1,e1.getImpressoras().size());
-	ASSERT_EQUAL("PBc", e1.getImpressoras()[0]->getCodigo());
+	ASSERT_EQUAL("PBc", e1.getImpressoras()[0]->getCodigo());*/
 }
 
 
 
 void test_c_ImprimeDoc() {
-	/* Documento docPB1(100, 1, 0);  //numPaginas, pPreto, PAmarelo
+	 Documento docPB1(100, 1, 0);  //numPaginas, pPreto, PAmarelo
 	 Documento docPB2(40, 1, 0);  //numPaginas, pPreto, PAmarelo
 	 Documento docC1(90, 0.8, 0.2);  //numPaginas, pPreto, PAmarelo
 	 Documento docC2(90, 0.2, 0.8);  //numPaginas, pPreto, PAmarelo
@@ -102,7 +102,7 @@ void test_c_ImprimeDoc() {
 	 ASSERT_EQUAL(true,impC.imprime(docC2));
 	 ASSERT_EQUAL(2,impC.getDocumentosImpressos().size());
 	 ASSERT_EQUAL(28,impC.getNumPaginasImprimir());
-	 ASSERT_EQUAL(false,impC.imprime(docC1));*/
+	 ASSERT_EQUAL(false,impC.imprime(docC1));
 }
 
 

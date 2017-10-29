@@ -30,15 +30,27 @@ int Impressora::getAno() const
 vector<Documento> Impressora::getDocumentosImpressos() const
 { return docsImpressos; }
 
-
-
+bool Impressora::imprime(Documento doc1) {
+	return false;
+}
 //ImpressoraPB
 ImpressoraPB::ImpressoraPB(string cod, int a, int toner): Impressora(cod, a), numPagImprimir(toner)
 {}
 
 int ImpressoraPB::getNumPaginasImprimir() const
 { return numPagImprimir; }
+bool ImpressoraPB::imprime(Documento doc1){
+	int nrpaginas = doc1.getNumPaginas();
 
+	if(nrpaginas < numPagImprimir)
+	{
+		numPagImprimir = numPagImprimir - nrpaginas;
+		docsImpressos.push_back(doc1);
+		return true;
+	}
+	else
+		return false;
+}
 
 
 //ImpressoraCores
@@ -49,6 +61,22 @@ ImpressoraCores::ImpressoraCores(string cod, int a, int toner): Impressora(cod, 
 int ImpressoraCores::getNumPaginasImprimir() const {
 	if (numPagImprimirPreto < numPagImprimirAmarelo) return (int)numPagImprimirPreto;
 	return (int)numPagImprimirAmarelo;
+}
+bool ImpressoraCores::imprime(Documento doc1)
+{
+	int nrpaginas = doc1.getNumPaginas();
+	float nrpaginaspreto = doc1.getPercentagemPreto();
+	float nrpaginasamarelo = doc1.getPercentagemAmarelo();
+
+	if((nrpaginas*nrpaginaspreto < numPagImprimirPreto) && (nrpaginas*nrpaginasamarelo < numPagImprimirAmarelo))
+	{
+		numPagImprimirAmarelo -= nrpaginas*nrpaginasamarelo; //Like Rui said in his repo
+		numPagImprimirPreto -= nrpaginas*nrpaginaspreto; //we're updating the n. of pages both yellow and black
+		return true;
+	}
+
+	else
+		return false;
 }
 
 

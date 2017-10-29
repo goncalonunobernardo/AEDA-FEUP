@@ -36,6 +36,8 @@ public:
 	string getCodigo() const;
 	int getAno() const;
 	vector<Documento> getDocumentosImpressos() const;
+	virtual bool imprime(Documento doc1)= 0;
+	virtual int getNumPaginasImprimir() const = 0;
 	// …
 };
 
@@ -44,6 +46,7 @@ class ImpressoraPB: public Impressora {
 public:
    ImpressoraPB(string cod, int a, int toner);
    int getNumPaginasImprimir() const;
+   bool imprime(Documento doc1);
 	// …
 };
 
@@ -53,6 +56,7 @@ class ImpressoraCores: public Impressora {
 public:
    ImpressoraCores(string cod, int a, int toner);
    int getNumPaginasImprimir() const;
+   bool imprime(Documento doc1);
 	// …
 };
 
