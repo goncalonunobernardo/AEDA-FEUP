@@ -124,10 +124,7 @@ Conta* Agencia::levantamento(string nomeCli, float valor) {
 	}
 	return new Normal(-1);
 }
-/* Esta função atualiza todas as contas existentes,
-debitando a taxa de serviço correspondente às contas
-normais.Retorna a soma dos saldos de todas as contas da
-agência, após esta atualização.*/
+
 float Agencia::fimMes() const{
 	float saldofinal = 0;
 
@@ -143,6 +140,47 @@ float Agencia::fimMes() const{
 
 	return saldofinal;
 }
+/* Esta função retira o cliente de nome nomeCli do vetor clientes da agência. Desassocia este cliente
+de todas as contas das quais é 2o titular. As contas das quais é 1otitular são passadas para o 2otitular,
+caso exista, senão deixam de existir na agência. A função retorna estas últimas, isto é, as contas das
+quais o cliente é 1o titular e que não possuem 2otitular.*/
+//vector<Conta*> Agencia::removeCliente(string nomeCli)
+//{
+//
+//
+//
+//}
+
+float Agencia::operator<(const Agencia &a1)
+{
+	float sum1 = 0;
+	float sum2 = 0;
+
+	//sum1
+	for(size_t i = 0; i< clientes.size(); i++)
+	{
+		for(size_t j = 0; j < clientes.at(i)->getContas().size(); j++)
+		{
+			sum1 += clientes.at(i)->getContas().at(j)->getSaldo();
+		}
+	}
+
+	//sum2
+	for(size_t i = 0; i< a1.clientes.size(); i++)
+		{
+			for(size_t j = 0; j < a1.clientes.at(i)->getContas().size(); j++)
+			{
+				sum2 += a1.clientes.at(i)->getContas().at(j)->getSaldo();
+			}
+		}
+
+	sum1 = sum1 /((float)clientes.size());
+	sum2 = sum2 /((float)a1.clientes.size());
+
+	return sum1 < sum2;
+}
+
+
 
 //Gerente
 int Gerente::getID() const {

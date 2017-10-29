@@ -85,6 +85,8 @@ public:
   void adicionaCliente(Cliente *cli1);
   Conta *levantamento(string nomeCli, float valor);
   float fimMes() const;
+  vector<Conta*> removeCliente(string nomeCli);
+  float operator<(const Agencia &a1);
 
 };
 
