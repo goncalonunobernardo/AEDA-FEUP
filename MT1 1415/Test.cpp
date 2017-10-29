@@ -5,7 +5,7 @@
 
 
 void test_a_Transacao() {
-	 Normal cn1(123, 100);
+	/* Normal cn1(123, 100);
 	 DeOperacao co1(456, 0.03, 200, 4);
 
 	 ASSERT_EQUAL(true, cn1.levantamento(30));
@@ -20,12 +20,12 @@ void test_a_Transacao() {
 	 ASSERT_EQUAL(false,co1.levantamento(150));
 	 ASSERT_EQUAL(5,co1.getNumTransacoes());
 	 co1.deposito(40);
-	 ASSERT_EQUAL_DELTA(179.97,co1.getSaldo(),0.001);
+	 ASSERT_EQUAL_DELTA(179.97,co1.getSaldo(),0.001);*/
 }
 
 
 void test_b_LevantamentoCliente() {
-	/*Agencia a1("Areosa");
+	Agencia a1("Areosa");
 	Cliente *c1 = new Cliente("Rui Joao");
 	Cliente *c2 = new Cliente("Maria Matos");
 	Cliente *c3 = new Cliente("Filipa Costa");
@@ -51,7 +51,7 @@ void test_b_LevantamentoCliente() {
 	ASSERT_EQUAL_DELTA(159.95,ct1->getSaldo(),0.001);
 	ct1=a1.levantamento("Filipa Costa",30);
 	ASSERT_EQUAL(444, ct1->getNumConta());
-	ASSERT_EQUAL_DELTA(40,ct1->getSaldo(),0.001);*/
+	ASSERT_EQUAL_DELTA(40,ct1->getSaldo(),0.001);
 }
 
 

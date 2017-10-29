@@ -46,9 +46,10 @@ public:
 
 
 class Cliente {
-  string nome;
   vector<Conta *> contas;
 public:
+	string nome;
+
   Cliente(string nm);
   string getNome() const;
   vector<Conta *> getContas() const;
@@ -79,6 +80,7 @@ public:
   vector<Cliente *> getClientes() const;
   vector<Gerente> getGerentes() const;
   void adicionaCliente(Cliente *cli1);
+  Conta *levantamento(string nomeCli, float valor);
 
 };
 
