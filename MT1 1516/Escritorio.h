@@ -22,7 +22,7 @@ public:
    int getNumPaginas() const;
    float getPercentagemPreto() const;
    float getPercentagemAmarelo() const;
-	// …
+   Documento& operator+(const Documento &d1);
 };
 
 class Impressora {

@@ -148,7 +148,7 @@ void test_d_ImpressoraImpressaoDoc() {
 
 
 void test_e_TonerBaixo() {
-	Escritorio e1;
+	/*Escritorio e1;
 	Impressora *imp1 = new ImpressoraPB("PBa", 2014, 25);   //codigo, ano, numPaginasToner
 	Impressora *imp2 = new ImpressoraCores("Ca", 2014, 50);   //codigo, ano, numPaginasToner
 	Impressora *imp3 = new ImpressoraPB("PBb", 2014, 100);   //codigo, ano, numPaginasToner
@@ -175,13 +175,13 @@ void test_e_TonerBaixo() {
 	res = e1.tonerBaixo();
 	ASSERT_EQUAL(3,res.size());
 	ASSERT_EQUAL(true, (res[0]->getCodigo()=="PBc" || res[1]->getCodigo()=="PBc" || res[2]->getCodigo()=="PBc"));
-	ASSERT_EQUAL(true, (res[0]->getCodigo()=="Cc" || res[1]->getCodigo()=="Cc" || res[2]->getCodigo()=="Cc"));
+	ASSERT_EQUAL(true, (res[0]->getCodigo()=="Cc" || res[1]->getCodigo()=="Cc" || res[2]->getCodigo()=="Cc"));*/
 }
 
 
 
 void test_f_OperadorMais() {
-	/*Documento d1(30,1,0);
+	Documento d1(30,1,0);
 	Documento d2(70,0.8,0.2);
 
 	Documento dx=d1+d2;
@@ -193,7 +193,7 @@ void test_f_OperadorMais() {
 	Documento dy=d1+d3;
 	ASSERT_EQUAL(80,dy.getNumPaginas());
 	ASSERT_EQUAL_DELTA(1,dy.getPercentagemPreto(),0.01);
-	ASSERT_EQUAL_DELTA(0,dy.getPercentagemAmarelo(),0.01);*/
+	ASSERT_EQUAL_DELTA(0,dy.getPercentagemAmarelo(),0.01);
 }
 
 

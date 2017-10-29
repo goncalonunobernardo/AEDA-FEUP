@@ -172,3 +172,15 @@ vector<Impressora *> Escritorio::tonerBaixo() const
 		}
 	return impressorasbaixot;
 }
+
+
+Documento& Documento::operator+(const Documento &d1)
+{
+	float bdblack = ((pPreto*numPaginas + d1.getPercentagemPreto()*d1.getNumPaginas())/(numPaginas + d1.getNumPaginas()));
+	float bdyellow = (pAmarelo*numPaginas + d1.getPercentagemAmarelo()*d1.getNumPaginas())/(numPaginas + d1.getNumPaginas());
+
+	int pages = numPaginas + d1.getNumPaginas();
+	Documento *newdoc = new Documento(pages,bdblack,bdyellow);
+
+	return *newdoc;
+}
