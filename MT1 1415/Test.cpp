@@ -25,7 +25,7 @@ void test_a_Transacao() {
 
 
 void test_b_LevantamentoCliente() {
-	Agencia a1("Areosa");
+	/*Agencia a1("Areosa");
 	Cliente *c1 = new Cliente("Rui Joao");
 	Cliente *c2 = new Cliente("Maria Matos");
 	Cliente *c3 = new Cliente("Filipa Costa");
@@ -51,12 +51,12 @@ void test_b_LevantamentoCliente() {
 	ASSERT_EQUAL_DELTA(159.95,ct1->getSaldo(),0.001);
 	ct1=a1.levantamento("Filipa Costa",30);
 	ASSERT_EQUAL(444, ct1->getNumConta());
-	ASSERT_EQUAL_DELTA(40,ct1->getSaldo(),0.001);
+	ASSERT_EQUAL_DELTA(40,ct1->getSaldo(),0.001);*/
 }
 
 
 void test_c_FimMes() {
-	/*Agencia a1("Areosa");
+	Agencia a1("Areosa");
 	Cliente *c1 = new Cliente("Rui Joao");
 	Cliente *c2 = new Cliente("Maria Matos");
 	Cliente *c3 = new Cliente("Filipa Costa");
@@ -74,7 +74,7 @@ void test_c_FimMes() {
 	a1.adicionaCliente(c2);
 	a1.adicionaCliente(c3);
 
-	ASSERT_EQUAL_DELTA(665.5,a1.fimMes(),0.001);*/
+	ASSERT_EQUAL_DELTA(665.5,a1.fimMes(),0.001);
 }
 
 

@@ -110,8 +110,6 @@ void Agencia::adicionaCliente(Cliente *cli1) {
 	clientes.push_back(cli1);
 }
 
-//Se o cliente não existe ou não possui nenhuma conta
-//com saldo suficiente, a função retorna uma Conta com número de conta igual a -1.
 Conta* Agencia::levantamento(string nomeCli, float valor) {
 
 	for (size_t i = 0; i < clientes.size(); i++) {
@@ -125,6 +123,25 @@ Conta* Agencia::levantamento(string nomeCli, float valor) {
 		}
 	}
 	return new Normal(-1);
+}
+/* Esta função atualiza todas as contas existentes,
+debitando a taxa de serviço correspondente às contas
+normais.Retorna a soma dos saldos de todas as contas da
+agência, após esta atualização.*/
+float Agencia::fimMes() const{
+	float saldofinal = 0;
+
+	for(size_t i = 0; i < clientes.size(); i++)
+	{
+		for(size_t j= 0; j< clientes.at(i)->getContas().size(); j++)
+		{
+			if(clientes.at(i)->getContas().at(j)->getTipo() == "N")
+				clientes.at(i)->getContas().at(j)->levantamento(1.5);
+			saldofinal += clientes.at(i)->getContas().at(j)->getSaldo();
+		}
+	}
+
+	return saldofinal;
 }
 
 //Gerente

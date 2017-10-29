@@ -28,12 +28,14 @@ public:
 	void setTitular2(Cliente *cli2);
 	virtual bool levantamento(float valor) = 0;
 	void deposito(float valor);
+	virtual string getTipo() const = 0;
 };
 
 class Normal: public Conta {
 public:
    Normal(int nConta, float sd=0, int nTrans=0);
    bool levantamento(float valor);
+   string getTipo() const { return "N"; }
 };
 
 
@@ -42,6 +44,7 @@ class DeOperacao: public Conta {
 public:
   DeOperacao(int nConta, float tx, float sd=0, int nTrans=0);
   bool levantamento(float valor);
+  string getTipo() const { return "Op"; }
 };
 
 
@@ -81,6 +84,7 @@ public:
   vector<Gerente> getGerentes() const;
   void adicionaCliente(Cliente *cli1);
   Conta *levantamento(string nomeCli, float valor);
+  float fimMes() const;
 
 };
 
