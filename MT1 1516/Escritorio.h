@@ -38,6 +38,7 @@ public:
 	vector<Documento> getDocumentosImpressos() const;
 	virtual bool imprime(Documento doc1)= 0;
 	virtual int getNumPaginasImprimir() const = 0;
+	virtual string getTipo() const = 0;
 	// …
 };
 
@@ -47,6 +48,8 @@ public:
    ImpressoraPB(string cod, int a, int toner);
    int getNumPaginasImprimir() const;
    bool imprime(Documento doc1);
+   string getTipo() const { return "PB"; }
+
 	// …
 };
 
@@ -57,6 +60,7 @@ public:
    ImpressoraCores(string cod, int a, int toner);
    int getNumPaginasImprimir() const;
    bool imprime(Documento doc1);
+   string getTipo() const { return "Cores"; }
 	// …
 };
 
@@ -83,6 +87,8 @@ public:
   vector<Impressora *> getImpressoras() const;
   int numImpressorasSemResponsavel() const;
   vector<Impressora *> retiraImpressoras(int ano1);
+  Impressora * imprimeDoc(Documento doc1) const;
+  vector<Impressora *> tonerBaixo() const;
   // …
 };
 

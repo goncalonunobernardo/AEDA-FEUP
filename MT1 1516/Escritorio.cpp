@@ -42,7 +42,7 @@ int ImpressoraPB::getNumPaginasImprimir() const
 bool ImpressoraPB::imprime(Documento doc1){
 	int nrpaginas = doc1.getNumPaginas();
 
-	if(nrpaginas < numPagImprimir)
+	if(nrpaginas <= numPagImprimir)
 	{
 		numPagImprimir = numPagImprimir - nrpaginas;
 		docsImpressos.push_back(doc1);
@@ -68,10 +68,12 @@ bool ImpressoraCores::imprime(Documento doc1)
 	float nrpaginaspreto = doc1.getPercentagemPreto();
 	float nrpaginasamarelo = doc1.getPercentagemAmarelo();
 
-	if((nrpaginas*nrpaginaspreto < numPagImprimirPreto) && (nrpaginas*nrpaginasamarelo < numPagImprimirAmarelo))
+	if((nrpaginas*nrpaginaspreto <= numPagImprimirPreto) && (nrpaginas*nrpaginasamarelo <=
+			numPagImprimirAmarelo))
 	{
 		numPagImprimirAmarelo -= nrpaginas*nrpaginasamarelo; //Like Rui said in his repo
 		numPagImprimirPreto -= nrpaginas*nrpaginaspreto; //we're updating the n. of pages both yellow and black
+		docsImpressos.push_back(doc1);
 		return true;
 	}
 
@@ -138,3 +140,35 @@ vector<Impressora *> Escritorio::retiraImpressoras(int ano1)
 	return impressremovida;
 }
 
+Impressora * Escritorio::imprimeDoc(Documento doc1) const
+{
+	for(size_t i = 0; i < impressoras.size(); i++)
+	{
+		if(impressoras.at(i)->imprime(doc1))
+			return impressoras.at(i);
+	}
+
+	return(new ImpressoraPB("inexistente",0,0));
+}
+
+vector<Impressora *> Escritorio::tonerBaixo() const
+{
+	string tipo;
+	vector<Impressora*> impressorasbaixot;
+
+	for(size_t i = 0; i <impressoras.size(); i++)
+	{
+		tipo = impressoras.at(i)->getTipo();
+		if(tipo == "Cores")
+		{
+			if(impressoras.at(i)->getNumPaginasImprimir() < 20)
+				impressorasbaixot.push_back(impressoras.at(i));
+		}
+			else
+			{
+				if (impressoras.at(i)->getNumPaginasImprimir() < 30)
+					impressorasbaixot.push_back(impressoras.at(i));
+			}
+		}
+	return impressorasbaixot;
+}
