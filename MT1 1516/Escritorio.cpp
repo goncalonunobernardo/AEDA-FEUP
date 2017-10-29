@@ -184,3 +184,14 @@ Documento& Documento::operator+(const Documento &d1)
 
 	return *newdoc;
 }
+
+
+string Escritorio::operator()(const string & codigo) const
+{
+	for(size_t i = 0; i< funcionarios.size(); i++)
+		for(size_t j = 0; j<funcionarios.at(i).getImpressoras().size(); j++)
+			if(funcionarios.at(i).getImpressoras().at(j)->getCodigo() == codigo)
+				return funcionarios.at(i).getCodigo();
+
+	return "nulo";
+}

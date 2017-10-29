@@ -89,7 +89,7 @@ public:
   vector<Impressora *> retiraImpressoras(int ano1);
   Impressora * imprimeDoc(Documento doc1) const;
   vector<Impressora *> tonerBaixo() const;
-  // …
+  string operator()(const string &codigo) const;
 };
 
 
