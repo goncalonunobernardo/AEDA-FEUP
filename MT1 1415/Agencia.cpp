@@ -180,6 +180,33 @@ float Agencia::operator<(const Agencia &a1)
 	return sum1 < sum2;
 }
 
+float Agencia::operator()(string name)
+{
+	int ind = -1;
+	float soma = 0;
+
+	for(size_t i = 0; i<clientes.size(); i++)
+	{
+		if(clientes.at(i)->getNome() == name)
+		{
+			ind = i;
+		}
+
+	}
+
+	if(ind != -1)
+	{
+		for(size_t i =0; i<clientes.at(ind)->getContas().size(); i++)
+		{
+			soma += clientes.at(ind)->getContas().at(i)->getSaldo();
+		}
+
+		return soma;
+	}
+	else
+		return -1;
+}
+
 
 
 //Gerente

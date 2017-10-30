@@ -87,7 +87,7 @@ public:
   float fimMes() const;
   vector<Conta*> removeCliente(string nomeCli);
   float operator<(const Agencia &a1);
-
+  float operator()(string name);
 };
 
 
