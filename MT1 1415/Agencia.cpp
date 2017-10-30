@@ -207,8 +207,22 @@ float Agencia::operator()(string name)
 		return -1;
 }
 
+static int Agencia::IDgerente =0;
 
+int Agencia::setGerenteID(int IDinicio){
+	IDgerente = IDinicio;
+}
 
+void Agencia::adicionaGerente(string nomeGer)
+{
+	Gerente g1 = Gerente(nomeGer);
+	g1.setID(IDgerente);
+
+	IDgerente++;
+
+	gerentes.push_back(g1);
+
+}
 //Gerente
 int Gerente::getID() const {
 	return ID;
@@ -216,5 +230,10 @@ int Gerente::getID() const {
 
 string Gerente::getNome() const {
 	return nome;
+}
+
+Gerente::Gerente(string nm)
+{
+	nome = nm;
 }
 

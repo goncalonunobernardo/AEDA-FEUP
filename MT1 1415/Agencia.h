@@ -69,11 +69,13 @@ public:
   Gerente(string nm);
   int getID() const;
   string getNome() const;
+  void setID(int id);
 
 };
 
 
 class Agencia {
+	static int IDgerente;
   string designacao;
   vector<Cliente *> clientes;
   vector<Gerente> gerentes;
@@ -88,6 +90,8 @@ public:
   vector<Conta*> removeCliente(string nomeCli);
   float operator<(const Agencia &a1);
   float operator()(string name);
+  int setGerenteID (int IDinicio);
+  void adicionaGerente(string nomeGer);
 };
 
 
