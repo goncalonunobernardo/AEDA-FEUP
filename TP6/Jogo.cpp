@@ -46,9 +46,14 @@ list<Crianca> Jogo::getCriancasJogo() const
 
 string Jogo::escreve() const
 {
-	// a alterar
-	string res;
-	return res;
+	string output;
+
+	for(auto it = criancas.begin(); it != criancas.end(); it++)
+	{
+		output += it->escreve() + "\n";
+	}
+
+	return output;
 }
 
 
