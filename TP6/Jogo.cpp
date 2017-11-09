@@ -5,10 +5,15 @@
 
 #include "Jogo.h"
 #include <sstream>
+#include <iterator>
+#include <iostream>
+#include <ctime>
+#include <vector>
+#include <cstdlib>
 using namespace std;
 
 
-unsigned Jogo::numPalavras(string frase)
+unsigned int Jogo::numPalavras(string frase)
 {
   if ( frase.length() == 0 ) return 0;
   int n=1;
@@ -23,25 +28,19 @@ unsigned Jogo::numPalavras(string frase)
 
 
 Jogo::Jogo()
-{
-	// a alterar
-}
+{}
 
-Jogo::Jogo(list<Crianca>& lc2)
-{
-	// a alterar
-}
+Jogo::Jogo(list<Crianca>& lc2) : criancas(lc2)
+{}
 
 void Jogo::insereCrianca(const Crianca &c1)
 {
-	// a alterar
+	criancas.push_back(c1);
 }
 
 list<Crianca> Jogo::getCriancasJogo() const
 {
-	// a alterar
-	list<Crianca> res;
-	return res;
+	return criancas;
 }
 
 
@@ -78,7 +77,7 @@ list<Crianca> Jogo::divide(unsigned id)
 
 void Jogo::setCriancasJogo(const list<Crianca>& l1)
 {
-	// a alterar
+	criancas = l1;
 }
 
 
