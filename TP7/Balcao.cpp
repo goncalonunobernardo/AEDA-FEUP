@@ -1,24 +1,20 @@
 #include <queue>
 #include <cstdlib>
 #include "Balcao.h"
+#include "exceptions.h"
 
 using namespace std;
 
 
-Cliente::Cliente() {
-	// a alterar
-}
+Cliente::Cliente() : numPresentes(rand()%5 + 1){}
 
 
 int Cliente::getNumPresentes() const {
-	// a alterar
-	return 0;
+	return numPresentes;
 }
 
 
-Balcao::Balcao(int te): tempo_embrulho(te) {
-	// a alterar
-}      
+Balcao::Balcao(int te) : tempo_embrulho(te), tempo_atual(0), prox_chegada((rand()%20) + 1), prox_saida(0), clientes_atendidos(0) {}
 
 
 void Balcao:: proximoEvento()
@@ -29,13 +25,44 @@ void Balcao:: proximoEvento()
 
 void Balcao::chegada()
 {
-	// a alterar
+	Cliente c1;
+
+	prox_chegada = tempo_atual + (rand()%20) +1;
+
+	if(clientes.empty())
+		prox_saida = tempo_atual + c1.getNumPresentes() * tempo_embrulho;
+
+	//inserting client
+	clientes.push(c1);
+
+	//prints
+	cout << "tempo= " << tempo_atual <<"\nchegou com novo cliente com " << c1.getNumPresentes() << " presentes\n";
 }   
 
 
 void Balcao::saida()
 {
-	// a alterar
+	Cliente c1;
+	try {
+		c1 = getProxCliente();
+	}
+	catch(FilaVazia &emp)
+	{
+		cout << emp.getMsg();
+		prox_saida = 0;
+		return;
+	}
+
+	//Removing
+	clientes.pop();
+
+	//update
+	prox_saida = tempo_atual + c1.getNumPresentes() * tempo_embrulho;
+
+	clientes_atendidos++;
+
+	//printing
+	cout << "tempo= " << tempo_atual << "\nSaiu um cliente e chegou novo cliente com " << c1.getNumPresentes() << " presentes";
 }
 
 
@@ -53,27 +80,27 @@ ostream & operator << (ostream & out, const Balcao & b1)
 
 
 int Balcao::getTempoEmbrulho() const {
-	// a alterar
-	return 0;
+
+	return tempo_embrulho;
 }
 
 
 int Balcao::getProxSaida() const {
-	// a alterar
-	return 0;
+	return prox_saida;
 }
 
 
 int Balcao::getClientesAtendidos() const {
-	// a alterar
-	return 0;
+	return clientes_atendidos;
 }
 
 
 Cliente & Balcao::getProxCliente() {
-	// a alterar
-	Cliente *c = new Cliente();
-	return *c;
+	if(clientes.empty())		//QUEUE is empty af
+		throw FilaVazia();
+
+	//Return front of queue
+	return clientes.front();
 }
 
       

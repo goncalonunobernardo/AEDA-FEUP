@@ -11,15 +11,12 @@
 #include <string>
 using namespace std;
 
-// a alterar
+
+
 class FilaVazia {
 public:
-	FilaVazia() {
-		// a alterar
-	}
-	string getMsg() const {
-		// a alterar
-	}
+	FilaVazia(){}
+	string getMsg() const {return "Fila Vazia"; }
 };
 
 
