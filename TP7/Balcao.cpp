@@ -19,8 +19,24 @@ Balcao::Balcao(int te) : tempo_embrulho(te), tempo_atual(0), prox_chegada((rand(
 
 void Balcao:: proximoEvento()
 {
-	// a alterar
+
+	if(clientes.empty())
+	{
+		tempo_atual = prox_chegada;
+		chegada();
+	}
+
+	if(prox_chegada <= prox_saida)
+	{
+		tempo_atual = prox_chegada;
+		chegada();
+	}
+	else {
+		tempo_atual = prox_saida;
+		saida();
+	}
 }
+
 
 
 void Balcao::chegada()
@@ -65,7 +81,6 @@ void Balcao::saida()
 	cout << "tempo= " << tempo_atual << "\nSaiu um cliente e chegou novo cliente com " << c1.getNumPresentes() << " presentes";
 }
 
-
 int Balcao::getTempoAtual() const { return tempo_atual; }
 
 
@@ -74,8 +89,10 @@ int Balcao::getProxChegada() const { return prox_chegada; }
 
 ostream & operator << (ostream & out, const Balcao & b1)
 {
-	// a alterar
-     return out;
+	out << "Nr de clientes atendidos: " << b1.clientes_atendidos << endl;
+	out << "Nr de clientes em espera: " << b1.clientes.size() << endl;
+
+	return out;
 }
 
 
