@@ -2,7 +2,7 @@
  * Jogo.h
  *
  */
-
+#pragma once
 #ifndef JOGO_H_
 #define JOGO_H_
 

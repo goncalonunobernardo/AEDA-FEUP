@@ -138,7 +138,20 @@ bool Jogo::operator==(Jogo& j2)
 
 list<Crianca> Jogo::baralha() const
 {
-	// a alterar
-	list<Crianca> res;
-	return res;
+	list<Crianca> tempcr(criancas);
+	list<Crianca> outputzolas;
+
+	unsigned long indexchosen;
+
+	while(!tempcr.empty())
+	{
+		indexchosen = rand()*tempcr.size(); // números de 5 a 10
+		auto it = tempcr.begin();
+		advance(it, indexchosen);
+		outputzolas.push_back(*it);
+
+		tempcr.erase(it);
+	}
+
+	return outputzolas;
 }

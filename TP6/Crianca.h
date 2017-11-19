@@ -2,7 +2,7 @@
  * Crianca.h
  *
  */
-
+#pragma once
 #ifndef CRIANCA_H_
 #define CRIANCA_H_
 
