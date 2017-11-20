@@ -6,7 +6,6 @@
  */
 
 #include "Purchase.h"
-
 using namespace std;
 
 Purchase::Purchase(long cli) : client (cli) {
@@ -24,11 +23,12 @@ list< stack<Article*> > Purchase::getBags() const {
  * Create an Article associated with the client of this purchase.
  */
 Article* Purchase::createArticle(long barCode, bool present, bool deliverHome) {
+	Article* article =  new Article(client, barCode);
 
-	// TODO
+	article ->setPresent(present);
+	article ->setDeliverHome(deliverHome);
 
-	return 0;
-
+	return article;
 }
 
 /**
@@ -36,8 +36,15 @@ Article* Purchase::createArticle(long barCode, bool present, bool deliverHome) {
  */
 void Purchase::putInBag(Article* article) {
 
-	// TODO
-
+	if(bags.back().size() < BAG_SIZE) {
+		bags.back().push(article);
+	}
+	else
+	{
+		stack<Article*> sackola;
+		sackola.push(article);
+		bags.push_back(sackola);
+	}
 }
 
 /**
