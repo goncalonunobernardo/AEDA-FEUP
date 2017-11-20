@@ -29,4 +29,5 @@ public:
 	void setArrivalNumber(int arrivalNumber);
 };
 
+bool sortFunctArt(Article *a1, Article *a2);
 #endif /* SRC_ARTICLE_H_ */

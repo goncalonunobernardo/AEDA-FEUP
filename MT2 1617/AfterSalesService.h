@@ -10,8 +10,8 @@
 
 #include <vector>
 #include <queue>
-#include <vector>
 #include "Article.h"
+#include "Purchase.h"
 
 class AfterSalesService {
 	std::vector<Article*> presentsTable;
@@ -26,7 +26,6 @@ public:
 	std::queue<Article*> getToWrap() const;
 	std::queue<Article*> getToDeliver() const;
 	void dropPresentsOnTable(std::vector<Article*> presents);
-
 	//--- TO IMPLEMENT
 	std::vector<Article*> pickPresentsFromTable(long client);
 	void sortArticles();

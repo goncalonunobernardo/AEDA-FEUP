@@ -80,4 +80,3 @@ vector<Article*> Purchase::popPresents() {
 
 	return presents;
 }
-

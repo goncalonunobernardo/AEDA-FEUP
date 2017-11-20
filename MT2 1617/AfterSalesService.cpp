@@ -8,6 +8,7 @@
 #include <algorithm>
 #include "AfterSalesService.h"
 
+
 using namespace std;
 
 int AfterSalesService::tableOrdinal = 0;
@@ -43,10 +44,18 @@ void AfterSalesService::dropPresentsOnTable(vector<Article*> presents) {
  * Remove from the table all articles of a given client.
  */
 vector<Article*> AfterSalesService::pickPresentsFromTable(long client) {
-
-	// TODO
-
 	vector<Article*> clientPresents;
+
+	for(size_t i = 0; i < presentsTable.size() ; i++)
+	{
+			if(presentsTable.at(i)->getClient()== client)
+			{
+				clientPresents.push_back(presentsTable.at(i));
+				presentsTable.erase(presentsTable.begin()+i);
+				i--;
+			}
+	}
+
 	return clientPresents;
 }
 
@@ -57,18 +66,21 @@ vector<Article*> AfterSalesService::pickPresentsFromTable(long client) {
  *       the one with lower present number should have priority (clients should not wait too much);
  * (iii) else, maintain article order in the table.
  */
+
 void AfterSalesService::sortArticles() {
 
-	// TODO
-
+	sort(this->presentsTable.begin(), this->presentsTable.begin()+10, sortFunctArt);
 }
 
 /**
  * Move the first presents in the table to the queue of presents to wrap, taking into account the size of the queue.
  */
 void AfterSalesService::enqueueArticles() {
-
-	// TODO
+	while((toWrap.size()< toWrapQueueSize) && (!presentsTable.empty()))
+	{
+		toWrap.push(presentsTable.at(0));
+		presentsTable.erase(presentsTable.begin());
+	}
 
 }
 
@@ -76,10 +88,23 @@ void AfterSalesService::enqueueArticles() {
  * Process the first present to wrap. If it is an article to deliver home, the article is placed in the toDeliver queue.
  */
 Article* AfterSalesService::wrapNext() {
+//is toWrap empty?
+	if(toWrap.empty())
+		return NULL;
 
-	// TODO
+//Remove the wrapped article from the queue
+	Article* WrappedArt = toWrap.front();
+	toWrap.pop();
 
-	return 0;
-
+	//to deliver at home?
+	if(WrappedArt->getDeliverHome())
+	{
+		toDeliver.push(WrappedArt);
+		return NULL;
+	}
+	else
+	{
+		return WrappedArt;
+	}
 }
 

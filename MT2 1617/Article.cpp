@@ -6,7 +6,7 @@
  */
 
 #include "Article.h"
-
+#include <cmath>
 using namespace std;
 
 Article::Article(long cli, long bc) : client(cli), barCode(bc) {
@@ -56,3 +56,13 @@ void Article::setArrivalNumber(int arrivalNumber) {
 	this->arrivalNumber = arrivalNumber;
 }
 
+bool sortFunctArt(Article *a1, Article *a2) {
+	if (a1->getDeliverHome() && !a2->getDeliverHome()) return false;
+	else if (!a1->getDeliverHome() && a2->getDeliverHome()) return true;
+	else if (!a1->getDeliverHome() && !a2->getDeliverHome()){
+		if (fabs(a1->getPresentNumber() - a2->getPresentNumber()) > 2){
+			if (a1->getPresentNumber() < a2->getPresentNumber()) return true;
+			else return false;
+		} else return a1->getArrivalNumber() < a2->getArrivalNumber();
+	} else return a1->getArrivalNumber() < a2->getArrivalNumber();
+}
