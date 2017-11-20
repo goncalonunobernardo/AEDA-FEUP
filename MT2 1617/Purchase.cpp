@@ -53,10 +53,31 @@ void Purchase::putInBag(Article* article) {
  */
 vector<Article*> Purchase::popPresents() {
 
-	// TODO
-
 	vector<Article*> presents;
-	return presents;
+	stack<Article*> tempmala;
+	list< stack <Article*> > ::iterator it;
 
+	for(it = bags.begin(); it != bags.end(); it++ )
+	{
+		while(!it->empty())
+		{
+			if(it->top()->getPresent() == true)
+				presents.push_back(it->top());
+			else
+				tempmala.push(it->top());
+
+			it->pop();  //remove from bag
+		}
+
+		//Bags with no presents, re-organizing
+		while(!tempmala.empty())
+		{
+			it->push(tempmala.top());
+			tempmala.pop();
+
+		}
+	}
+
+	return presents;
 }
 
