@@ -126,11 +126,28 @@ void Restaurant::storeDryDishes(string collection, TypeOfDish type) {
  * Throws NotEnoughDishesException when there are not enough clean plates of the collection.
  */
 void Restaurant::setupTable(vector<Table>::size_type idx, string collection) {
+vector<Dish *> d;
 
-	// TODO
+	if(idx >= tables.size() || idx < 0)
+		return;
+	if(!tables.at(idx).empty())
+		throw TableNotReadyException();
+	else
+	{
+		if(getCleanDishStack(collection, Plate).size() < tables.at(idx).size())
+			throw NotEnoughDishesException();
+		else
+		{
+			for(size_t i = 0; i < tables.at(idx).size(); i++)
+			{
+				d.push_back(getCleanDishStack(collection,Plate).top());
+				getCleanDishStack(collection,Plate).pop();
+			}
 
+			tables.at(idx).putOn(d);
+		}
+	}
 }
-
 /**
  * Picks the dry dishes and groups them.
  * Returns the grouped dishes.
