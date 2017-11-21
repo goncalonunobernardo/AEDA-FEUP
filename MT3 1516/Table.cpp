@@ -82,8 +82,15 @@ void Table::putOn(vector<Dish*> dishes) {
  */
 vector<Dish*> Table::clear() {
 	vector<Dish*> dishes;
-
-	// TODO
+	//get
+	for(size_t i = 0; i < places.size(); i++)
+	{
+		while(!places.at(i).empty())
+		{
+			dishes.push_back(places.at(i).top());
+			places.at(i).pop();
+		}
+	}
 
 	return dishes;
 }

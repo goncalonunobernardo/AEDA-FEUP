@@ -85,8 +85,21 @@ Dish* Restaurant::washDish() {
  */
 void Restaurant::clearTable(vector<Table>::size_type idx) {
 
-	// TODO
+	if(tables.size() > idx)
+	{
+		for(auto p: tables.at(idx).getPlaces())
+		{
+			while(!(p.empty()))
+			{
+			dirty.push(p.top());
+			p.pop();
+			}
+		}
 
+		tables.at(idx).clear();
+	}
+
+	return;
 }
 
 /**
@@ -94,8 +107,17 @@ void Restaurant::clearTable(vector<Table>::size_type idx) {
  */
 void Restaurant::storeDryDishes(string collection, TypeOfDish type) {
 
-	// TODO
+	for(auto i = drying.begin(); i != drying.end(); i++)
+	{
+		if(((*i)->getCollection()== collection) && ((*i)->getType() == type))
+		{
+			this->getCleanDishStack(collection, type).push((*i));
+			i = drying.erase(i);
 
+			if(i != drying.begin())
+				i--;
+		}
+	}
 }
 
 /**
