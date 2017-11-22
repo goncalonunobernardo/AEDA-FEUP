@@ -6,6 +6,8 @@
  */
 
 #include "Restaurant.h"
+#include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -148,6 +150,14 @@ vector<Dish *> d;
 		}
 	}
 }
+
+bool sortDishes( Dish* d1, Dish* d2)
+{
+	if(d1->getCollection() == d1->getCollection())
+		return d1->getType() < d2->getType();
+	else
+		return d1->getCollection() < d2->getCollection();
+}
 /**
  * Picks the dry dishes and groups them.
  * Returns the grouped dishes.
@@ -155,7 +165,21 @@ vector<Dish *> d;
 list<Dish*> Restaurant::pickupAndGroupDryDishes() {
 	list<Dish*> dry_grouped;
 
-	// TODO
+	while(!drying.empty()){
+		vector<Dish*> v;
+		v.push_back(*drying.begin());
+		drying.erase(drying.begin());
+		for(auto it=drying.begin();it!=drying.end();it++)
+			if(**it==**v.begin()){
+				v.push_back(*it);
+				it=drying.erase(it);
+				if(it!=drying.begin())
+					it--;
+			}
+
+		for(int i=0;i<v.size();i++)
+			dry_grouped.push_back(v.at(i));
+	}
 
 	return dry_grouped;
 }
@@ -165,9 +189,25 @@ list<Dish*> Restaurant::pickupAndGroupDryDishes() {
  * Returns the number of stacks that have been updated.
  */
 int Restaurant::storeGroupedDishes(list<Dish*> grouped_dishes) {
+//RUI'S RESOLUTION
+	string collection;
+	TypeOfDish type;
+	unsigned int dishStackCounter = 0;
 
-	// TODO
+	// Iterate through the grouped dishes
+	for (auto it=grouped_dishes.begin() ; it!=grouped_dishes.end() ; it++){
+		collection = (*it)->getCollection();
+		type = (*it)->getType();
+		dishStackCounter++;		// Increment the counter
+		stack<Dish*> & dishesStack = getCleanDishStack(collection,type);	// Get the stack of the right type of dishes
+		while ( ((*it)->getCollection()==collection) && ((*it)->getType()==type)){
+			dishesStack.push(*it);
+			it++;
+			if (it == grouped_dishes.end()) break;
+		}
+		it--;
+	}
 
-	return 0;
+	return dishStackCounter;
 }
 
