@@ -14,14 +14,23 @@ BST<PalavraSignificado> Dicionario::getPalavras() const
 
 bool PalavraSignificado::operator < (const PalavraSignificado &ps1) const
 {
-	// a alterar
-	return true;
+
+	return (palavra < ps1.palavra);
 }
 
 
 void Dicionario::lerDicionario(ifstream &fich)
 {
-	// a alterar
+	string palavra, significado;
+
+	//Getting the word through the file
+	while(getline(fich,palavra))
+	{
+		getline(fich, significado); //Get the meaning
+		//Removing "\r" from txt files
+		if(palavra.at(palavras.size()-1) == '\r')
+			palavra.erase(palavras.size()-1);
+	}
 	return;
 }
 
