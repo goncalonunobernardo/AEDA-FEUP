@@ -18,39 +18,77 @@ bool PalavraSignificado::operator < (const PalavraSignificado &ps1) const
 	return (palavra < ps1.palavra);
 }
 
+bool PalavraSignificado::operator == (const PalavraSignificado &ps1) const
+{
+	return (palavra == ps1.palavra);
+}
 
 void Dicionario::lerDicionario(ifstream &fich)
 {
 	string palavra, significado;
 
-	//Getting the word through the file
-	while(getline(fich,palavra))
+	while(!fich.eof())
 	{
-		getline(fich, significado); //Get the meaning
-		//Removing "\r" from txt files
-		if(palavra.at(palavras.size()-1) == '\r')
-			palavra.erase(palavras.size()-1);
+		getline(fich, palavra);
+		getline(fich, significado);
+
+		PalavraSignificado p1(palavra,significado);
+		palavras.insert(p1);
 	}
-	return;
 }
 
 
 string Dicionario::consulta(string palavra) const
 {
-     // a alterar
+    BSTItrIn<PalavraSignificado> it(palavras);
+    PalavraSignificado panterior("","");
+    PalavraSignificado pdepois("","");
+
+    while(!it.isAtEnd())
+    {
+    	pdepois = it.retrieve();
+
+    	if(it.retrieve().getPalavra() == palavra)
+    		return(pdepois.getSignificado());
+    	else if(pdepois.getPalavra() > palavra)
+    		throw(PalavraNaoExiste(panterior,pdepois));
+
+    	panterior = it.retrieve();
+
+    	it.advance();
+    }
 	return "";
 }
 
 
 bool Dicionario::corrige(string palavra, string significado)
 {
-	// a alterer
-		return true;
+		BSTItrIn<PalavraSignificado> it(palavras);
+
+		while (!it.isAtEnd())
+		{
+			if (it.retrieve().getPalavra() == palavra)
+			{
+				palavras.remove(PalavraSignificado(palavra,""));
+				palavras.insert(PalavraSignificado(palavra,significado));
+				return true;
+			}
+			it.advance();
+		}
+
+		palavras.insert(PalavraSignificado(palavra,significado));
+		return false;
 }
 
 
 void Dicionario::imprime() const
 {
-	// a alterar
-     return;
+	BSTItrIn<PalavraSignificado> it(palavras);
+
+	while(!it.isAtEnd())
+	{
+		cout << it.retrieve().getPalavra()<< endl <<it.retrieve().getSignificado() << endl;
+		it.advance();
+
+	}
 }
