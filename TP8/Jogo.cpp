@@ -61,22 +61,61 @@ string Jogo::escreveJogo()
 		it.advance();
 	}
 
-	return game;
+	return jogo;
 }
 
 
 int Jogo::jogada()
 {
-	// a alterar
-	return 0;
+	int score = 1;
+	int n = 1;
+	BTItrLevel<Circulo> it(jogo);
+
+	while(!it.isAtEnd())
+	{
+		Circulo & circulo = it.retrieve();
+
+		if(circulo.getPontuacao() != n)
+		{
+			it.advance();
+			continue;
+		}
+
+		if(circulo.getEstado())
+			n = n*2+1;
+		else
+			n*=2;
+
+		score = circulo.getPontuacao();
+		circulo.mudaEstado();
+		circulo.incNvisitas();
+	}
+
+
+	return score;
 }
 
 
 
 int Jogo::maisVisitado()
 {
-	// a alterar
-	return 0;
+	BTItrLevel<Circulo> it(jogo);
+	int nVis = 0;
+
+	if(it.isAtEnd())
+		return 0;
+
+	it.advance; //skip the rooterino
+
+	while(!it.isAtEnd())
+	{
+		if(it.retrieve().getNVisitas() > nVis)
+			nVis = it.retrieve().getNVisitas();
+
+		it.advance();
+	}
+
+	return nVis;
 }
 
 

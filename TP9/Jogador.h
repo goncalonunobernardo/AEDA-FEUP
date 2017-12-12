@@ -17,7 +17,13 @@ struct apostaHash
 	
 	bool operator() (const Aposta & ap1, const Aposta & ap2) const
 	{
-		return true;
+		if (ap1.getNumeros().size() != ap2.getNumeros().size())
+		{
+			return false;
+		}
+
+		int n = ap1.calculaCertos(ap2.getNumeros());
+		return (n == ap1.getNumeros().size());
 	}
 };
 
