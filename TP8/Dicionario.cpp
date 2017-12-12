@@ -25,14 +25,14 @@ bool PalavraSignificado::operator == (const PalavraSignificado &ps1) const
 
 void Dicionario::lerDicionario(ifstream &fich)
 {
-	string palavra, significado;
+	string pal, significado;
 
 	while(!fich.eof())
 	{
-		getline(fich, palavra);
+		getline(fich, pal);
 		getline(fich, significado);
 
-		PalavraSignificado p1(palavra,significado);
+		PalavraSignificado p1(pal,significado);
 		palavras.insert(p1);
 	}
 }

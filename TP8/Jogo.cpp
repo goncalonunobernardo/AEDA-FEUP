@@ -105,7 +105,7 @@ int Jogo::maisVisitado()
 	if(it.isAtEnd())
 		return 0;
 
-	it.advance; //skip the rooterino
+	it.advance(); //skip the rooterino
 
 	while(!it.isAtEnd())
 	{

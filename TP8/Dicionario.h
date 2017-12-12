@@ -10,8 +10,8 @@ class PalavraSignificado {
       string significado;
 public:
        PalavraSignificado(string p, string s): palavra(p), significado(s) {}
-       string getPalavra() { return palavra; }
-       string getSignificado() { return significado; }
+       string getPalavra() const { return palavra; }
+       string getSignificado() const { return significado; }
        void setSignificado(string sig) { significado = sig; }
        bool operator < (const PalavraSignificado &ps1) const;
        bool operator == (const PalavraSignificado &ps1) const;
