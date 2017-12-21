@@ -34,7 +34,17 @@ priority_queue<Cinema> CinemaFinder::getCinemas() const
 list<string> CinemaFinder::filmsWithActor(string actorName) const {
 	list<string> res;
 
-	// TODO
+	for(auto it= films.begin(); it !=films.end(); it++)
+	{
+		list<string> aux = (*it).film->getActors();
+		for(auto it2 = aux.begin(); it2 != aux.end(); it2++)
+		{
+			if((*it2) == actorName)
+			{
+				res.push_back((*it).film->getTitle());
+			}
+		}
+	}
 
 	return res;
 }
@@ -43,24 +53,66 @@ list<string> CinemaFinder::filmsWithActor(string actorName) const {
 //b2
 void CinemaFinder::addActor(string filmTitle, string actorName) {
 
-	// TODO
+	for(auto it = films.begin(); it != films.end(); it++)
+	{
+		if((*it).film->getTitle() == filmTitle)
+		{
+			(*it).film->addActor(actorName);
+			return;
+		}
+	}
+
+	list<string> temp;
+
+	Film *filme = new Film(filmTitle,temp);
+	filme->addActor(actorName);
+
+	FilmPtr fp;
+
+	fp.film= filme;
+
+	films.insert(fp);
+
 
 }
 
 
 //c1
 string CinemaFinder::nearestCinema(string service1) const {
-	string cName="";
+	priority_queue<Cinema> aux = cinemas;
+	list<string> services;
 
-	// TODO
+	while(!aux.empty()){
+		Cinema c = aux.top();
+		aux.pop();
 
-	return cName;
+		services=c.getServices();
+
+		for(auto it=services.begin() ; it!=services.end() ; it++){
+			if( (*it) == service1){
+				return c.getName();
+			}
+		}
+
+	}
+
+
+	return "";
 }
-
 
 //c2
 void CinemaFinder::addServiceToNearestCinema(string service1, unsigned maxDistance) {
 
-	// TODO
+	if(cinemas.empty()) throw CinemaNotFound();
+	Cinema temp = cinemas.top();
+	cinemas.pop();
 
+	if(temp.getDistance() > maxDistance)
+	{
+		cinemas.push(temp);
+		throw CinemaNotFound();
+	}
+
+	temp.addService(service1);
+	cinemas.push(temp);
 }

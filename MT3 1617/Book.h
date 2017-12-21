@@ -38,7 +38,7 @@ public:
 	vector<Book*> getItems() const;
 	void setItems(vector<Book*> books);
 	void addItems(Book* book);
-	//TODO:
+
     bool operator<(const BookCatalogItem &bci1) const;
     bool operator==(const BookCatalogItem &bci1) const;
 };

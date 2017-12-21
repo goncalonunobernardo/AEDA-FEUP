@@ -25,13 +25,12 @@ bool FilmTime::operator == (const FilmTime &ft) const
 { return (film==ft.film && hour==ft.hour && roomID==ft.roomID); }
 
 
-// TODO
-
-bool FilmTime::operator<(const FilmTime & ft1) const
-{
-	//TODO: Implement a correct version of the operator
-	return true;
+bool FilmTime::operator<(const FilmTime & ft1) const {
+	if (hour == ft1.getHour())
+		return roomID < ft1.getRoomID();
+	else return hour < ft1.getHour();
 }
+
 
 
 
